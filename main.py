@@ -3,7 +3,7 @@
 """程序入口"""
 import sys
 sys.dont_write_bytecode = True
-from modules import i18n
+from app.modules import i18n
 
 print(i18n.trans("output.loading_libraries"))
 #Threading
@@ -17,14 +17,14 @@ import json
 import json_minify
 
 print(i18n.trans("output.loading_modules"))
-from modules import events, global_values as gv
+from app.modules import events, global_values as gv
 gv._init()
-from modules import tools
-from modules import events
+from app.modules import tools
+from app.modules import events
 events._init()
 print(i18n.trans("output.loading_classes"))
 #Class definations
-from modules import classes
+from app.modules import classes
 #Main program
 import app
 import startup

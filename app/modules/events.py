@@ -6,9 +6,9 @@ Event体系主模块
 """
 def _init() -> None:
     global gv
-    from modules import global_values as gv
+    from . import global_values as gv
     global get_type
-    from modules.tools import get_type
+    from .tools import get_type
     global time
     import time
     gv.set("ex-notify",None)

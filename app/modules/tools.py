@@ -3,7 +3,7 @@
 """
 工具箱
 """
-from modules import global_values as gv
+from . import global_values as gv
 
 def get_type(variate:any) -> str:
     """判断值的类型"""

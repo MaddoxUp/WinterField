@@ -3,6 +3,7 @@
 """多语言系统"""
 import i18n
 import locale
+
 i18n.load_path.append("./translations/terminal_output")
 i18n.load_path.append("./translations")
 i18n.set('available_locales',["en","zh_CN","zh_TW"])

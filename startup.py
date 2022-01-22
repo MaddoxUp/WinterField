@@ -3,11 +3,11 @@
 """程序启动模块"""
 
 from app.locals import REAL_HEIGHT, REAL_WIDTH
-from modules import classes, events
-from modules import global_values as gv
+from app.modules import classes, events
+from app.modules import global_values as gv
 import pygame
 from pygame.locals import *
-from modules import events
+from app.modules import events
 from app import basic_display
 from app import integrated_display_functions as display
 

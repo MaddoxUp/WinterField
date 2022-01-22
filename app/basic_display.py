@@ -2,8 +2,8 @@
 # Copyright (C) 2021-2022 THCWorkshopCN
 """基础的显示模块"""
 
-from modules import classes#,events
-from modules import global_values as gv
+from .modules import classes
+from .modules import global_values as gv
 import pygame
 from pygame.locals import *
 import tkinter
