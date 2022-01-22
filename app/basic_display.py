@@ -9,16 +9,15 @@ from pygame.locals import *
 import tkinter
 import operator
 from app.locals import *
-import PIL
 from io import StringIO
 from PIL import Image
 
-def objl_sort():
+def objl_sort() -> list:
     global object_list
     return sorted(object_list, key=operator.itemgetter("layer"))
 
 tk = tkinter.Tk()
-def _init():
+def _init() -> None:
     """初始化display模块"""
     global screen,screen_size,screen_width,screen_height,background
     screen_size = screen_width, screen_height = 800,600
@@ -39,7 +38,7 @@ def _init():
     gv.set("backup_screen_size",backup_screen_size)
     calculate_d_ratio()
 
-def calculate_d_ratio() -> classes.display.display_map:
+def calculate_d_ratio() -> None:
     """重新计算显示大小与真实大小的比值，用于缩放"""
     global d_width_ratio, d_height_ratio, d_ratio, screen_width, screen_height, screen_size
     screen_width, screen_height = screen_size
@@ -55,17 +54,17 @@ class renderer(object):
     """与画面呈现直接有关的函数"""
     def __init__(self) -> None:
         global _fill, object_list, d_ratio
-    def addobject(self,_source:pygame.Surface,location:tuple,layer:int=0,name:str=None) -> classes.display.display_map:
+    def addobject(self,_source:pygame.Surface,location:tuple,layer:int=0,name:str=None) -> None:
         """往渲染列表中添加object"""
         args = {"_source":_source,"location":location,"layer":layer,"d_ratio":d_ratio,"name":name,"initial_source":_source,"initial_location":location}
         object_list.append(args)
     def fill(self,color:tuple):
         global fill_color
         fill_color = color
-    def smart_render(self) ->classes.display:
+    def smart_render(self) -> None:
         """自动检测画面中需要渲染的部分并进行渲染"""
         pass
-    def rerender(self) -> classes.display:
+    def rerender(self) -> None:
         """对画面进行彻底的重新渲染"""
         #将列表按优先级进行排列，实现图层覆盖
         object_list = objl_sort()
@@ -81,7 +80,7 @@ class renderer(object):
                 object_list[i]["d_ratio"] = d_ratio
             screen.blit(object_list[i]["_source"],object_list[i]["location"])
 
-def resize(isfullscreen) -> classes.display:
+def resize(isfullscreen) -> None:
     resized = False
     global screen_size, screen_width, screen_height, object_list, d_width_ratio, d_height_ratio, d_ratio
     # 这个函数中必须先判断窗口大小是否变化，再判断是否全屏

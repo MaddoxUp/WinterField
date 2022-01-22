@@ -6,6 +6,7 @@ sys.dont_write_bytecode = True
 from app.modules import i18n
 
 print(i18n.trans("output.loading_libraries"))
+
 #Threading
 import threading
 #Pygame
@@ -13,16 +14,17 @@ import pygame
 from pygame.constants import *
 from pygame.locals import *
 pygame.init()
-import json
-import json_minify
 
 print(i18n.trans("output.loading_modules"))
+
 from app.modules import events, global_values as gv
 gv._init()
 from app.modules import tools
 from app.modules import events
 events._init()
+
 print(i18n.trans("output.loading_classes"))
+
 #Class definations
 from app.modules import classes
 #Main program
