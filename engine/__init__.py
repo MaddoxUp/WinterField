@@ -12,12 +12,13 @@ from . import basic_display
 from .modules import global_values as gv
 from .modules import events
 from . import basic_gui
-gv._init()
-basic_display._init()
+from . import locals
+
+gv.init()
+basic_display.init()
 
 
-
-def _init():
+def init():
     """开始加载模块"""
-    events._init()
-    basic_display._init() #初始化显示模块
+    events.init()
+    basic_display.init()  # 初始化显示模块

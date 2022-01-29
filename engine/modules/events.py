@@ -4,7 +4,7 @@
 """
 Event体系主模块
 """
-def _init() -> None:
+def init() -> None:
     global gv
     from . import global_values as gv
     global get_type
