@@ -3,14 +3,15 @@
 """类的定义"""
 from . import basic_gui
 
-class display(object):
-    """改变呈现出的画面"""
+
+class TextSurface(object):
     pass
-    class display_map(object):
-        """改变将要呈现的画面"""
+
+
+class EventGetter(object):
+    """需要获取Event的类"""
+    def __init__(self, get_expected_events=False) -> None:
+        self.expected_events: list = []
+
+    def receive_event(self, event):
         pass
-
-class text_surface(object):
-    pass
-
-button = basic_gui.button
