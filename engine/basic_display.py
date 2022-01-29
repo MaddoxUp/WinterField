@@ -2,15 +2,12 @@
 # Copyright (C) 2021-2022 THCWorkshopCN
 """基础的显示模块"""
 
-from .modules import classes
 from .modules import global_values as gv
 import pygame
 from pygame.locals import *
 import tkinter
 import operator
 from engine.locals import *
-from io import StringIO
-from PIL import Image
 
 def objl_sort() -> list:
     global object_list
@@ -44,10 +41,12 @@ def transforming(_object_list):
             initial_source = _object_list[i]["initial_source"]
             rect = initial_source.get_rect()
             new_size = rect.width*d_width_ratio, rect.height*d_height_ratio
-            _object_list[i]["_source"] = pygame.transform.scale(initial_source,new_size)
+            new_source = pygame.transform.scale(initial_source,new_size)
+            _object_list[i]["_source"] = new_source
             my_location = _object_list[i]["initial_location"]
             _object_list[i]["location"] = my_location[0]*d_width_ratio, my_location[1]*d_height_ratio
             _object_list[i]["d_ratio"] = d_ratio
+            _object_list[i]["d_size"] = (new_source.get_width(),new_source.get_height())
     return _object_list
 
 def calculate_d_ratio() -> None:
@@ -68,7 +67,13 @@ class renderer(object):
         global _fill, object_list, d_ratio
     def addobject(self,_source:pygame.Surface,location:tuple,layer:int=0,name:str=None) -> None:
         """往渲染列表中添加object"""
-        args = {"_source":_source,"location":location,"layer":layer,"d_ratio":d_ratio,"name":name,"initial_source":_source,"initial_location":location}
+        args = {
+            "_source":_source,
+            "location":location,"layer":layer,
+            "d_ratio":d_ratio,"d_size":(_source.get_width(),_source.get_height),
+            "initial_source":_source,"initial_location":location,
+            "name":name
+            }
         object_list.append(args)
     def fill(self,color:tuple):
         global fill_color

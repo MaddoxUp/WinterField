@@ -15,22 +15,17 @@ pygame.init()
 
 print(i18n.trans("output.loading_modules"))
 
-from engine.modules import events, global_values as gv
-gv._init()
-from engine.modules import tools
-from engine.modules import events
-events._init()
+import engine
 
 print(i18n.trans("output.loading_classes"))
 
-from engine.modules import classes
 #Main program
-import engine
 import startup
 engine._init()
 def main(): #主程序过程
     global engine,isfullscreen
     engine._init()
+    engine.locals.default_font_path = "./fonts/SourceHanSans-Light.otf"
     startup.startup()
     isfullscreen = None
     while True:  #主循环

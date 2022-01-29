@@ -5,3 +5,5 @@
 REAL_WH_RATIO = 4/3
 REAL_WIDTH = 800
 REAL_HEIGHT = 600
+
+default_font_path = None
